@@ -6,4 +6,7 @@
 	right: 0;
 	text-align: center;
 	z-index: 9;
+	height: 80vh;
+	width: 80%;
+	object-fit: cover;
 }

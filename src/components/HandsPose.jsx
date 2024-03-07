@@ -53,7 +53,6 @@ function HandsPose() {
           const hands = await detector.estimateHands(webcam, {
             flipHorizontal: true,
           });
-          console.log(hands);
           const ctx = canvasRef.current.getContext("2d");
           drawHands(hands, ctx);
         }
@@ -63,7 +62,7 @@ function HandsPose() {
     };
 
     // Run hand detection periodically
-    const intervalId = setInterval(runHandDetection, 100); 
+    const intervalId = setInterval(runHandDetection, 10);
 
     return () => clearInterval(intervalId);
   }, [detector]);
@@ -76,24 +75,13 @@ function HandsPose() {
     <div>
       <Webcam
         className="video-feed"
-        style={{
-          width: 640,
-          height: 480,
-        }}
         id="webcam"
         mirrored={true}
         ref={webcamRef}
         audio={false}
         onUserMedia={() => handleVideoLoaded()}
       />
-      <canvas
-        className="video-feed"
-        style={{
-          width: 640,
-          height: 480,
-        }}
-        ref={canvasRef}
-      />
+      <canvas className="video-feed" ref={canvasRef} />
     </div>
   );
 }
