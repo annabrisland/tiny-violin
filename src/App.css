@@ -7,17 +7,3 @@
 	text-align: center;
 	z-index: 9;
 }
-
-.canvas-wrapper {
-	background-color: green;
-	position: absolute;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	text-align: center;
-}
-
-.canvas {
-	border: solid 5px red;
-}
