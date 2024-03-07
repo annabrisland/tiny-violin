@@ -1,11 +1,23 @@
-#container {
-	margin: 0px auto;
-	width: 500px;
-	height: 375px;
-	border: 10px #333 solid;
+.video-feed {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 9;
 }
-#videoElement {
-	width: 500px;
-	height: 375px;
-	background-color: #666;
+
+.canvas-wrapper {
+	background-color: green;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.canvas {
+	border: solid 5px red;
 }
