@@ -2,12 +2,13 @@ import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Webcam from "react-webcam";
 import * as handPoseDetection from "@tensorflow-models/hand-pose-detection";
-import { drawHands, findTouchingFingers } from "./utils";
+import { drawHands, findTouchingFingers, playNote } from "./utils";
 
 function HandsPose() {
   const [detector, setDetector] = useState(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [play, setPlay] = useState(false);
+  const [finger, setFinger] = useState(null);
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -57,8 +58,10 @@ function HandsPose() {
           // Draw hands on canvas
           const ctx = canvasRef.current.getContext("2d");
           drawHands(hands, ctx);
-          // Check if fingers are touching
-          setPlay(findTouchingFingers(hands, 15));
+          // Check if & which fingers are touching
+          const touchingFingers = findTouchingFingers(hands, 15);
+          setPlay(touchingFingers.touching);
+          setFinger(touchingFingers.finger);
         }
       } catch (error) {
         console.log("Error detecting hands:", error);
@@ -74,7 +77,7 @@ function HandsPose() {
   // Play note when fingers are touching
   useEffect(() => {
     if (play) {
-      console.log("Playing note");
+      playNote(finger);
     }
   }, [play]);
 

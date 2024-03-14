@@ -71,7 +71,8 @@ export const findTouchingFingers = (handsData, distanceThreshold) => {
           fingertips.thumb.y - fingertips[finger].y
         );
         if (thumbFingerDistance < distanceThreshold) {
-          return true;
+          // Returns finger and touching status
+          return { finger, touching: true };
         }
       }
     }
@@ -80,8 +81,14 @@ export const findTouchingFingers = (handsData, distanceThreshold) => {
 }
 
 // Function to play note
-export const playNote = (note) => {
-  const audio = new Audio(`../assets/notes/${note}.mp3`);
+export const playNote = (finger) => {
+  const note = {
+    index: "note1",
+    middle: "note1",
+    ring: "note1",
+    pinky: "note1",
+  };
+  const audio = new Audio(`src/assets/notes/${note[finger]}.mp3`);
   audio.play();
-  console.log("Playing note:", note);
+  console.log("Playing note:", note[finger]);
 };
