@@ -7,6 +7,7 @@ const fingerPoints = {
   pinky: [0, 17, 18, 19, 20],
 };
 
+// Function to draw hands
 export const drawHands = (handsData, ctx) => {
   // Check for data
   if (handsData.length > 0) {
@@ -48,4 +49,34 @@ export const drawHands = (handsData, ctx) => {
       }
     });
   }
+};
+
+// Function to find touching fingers
+export const findTouchingFingers = (handsData, distanceThreshold) => {
+  if (handsData.length > 0) {
+    // Get thumb and fingertips
+    const fingertips = {
+      thumb: handsData[0].keypoints[4],
+      index: handsData[0].keypoints[8],
+      middle: handsData[0].keypoints[12],
+      ring: handsData[0].keypoints[16],
+      pinky: handsData[0].keypoints[20],
+    };
+    // Calculate distance between thumb and index finger
+    const thumbIndexDistance = Math.hypot(
+      fingertips.thumb.x - fingertips.index.x,
+      fingertips.thumb.y - fingertips.index.y
+    );
+    if (thumbIndexDistance < distanceThreshold) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Function to play note
+export const playNote = (note) => {
+  const audio = new Audio(`../assets/notes/${note}.mp3`);
+  audio.play();
+  console.log("Playing note:", note);
 };
