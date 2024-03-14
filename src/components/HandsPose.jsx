@@ -59,7 +59,6 @@ function HandsPose() {
           drawHands(hands, ctx);
           // Check if fingers are touching
           setPlay(findTouchingFingers(hands, 15));
-          console.log(play, findTouchingFingers(hands, 15));
         }
       } catch (error) {
         console.log("Error detecting hands:", error);
@@ -71,6 +70,13 @@ function HandsPose() {
 
     return () => clearInterval(intervalId);
   }, [detector]);
+
+  // Play note when fingers are touching
+  useEffect(() => {
+    if (play) {
+      console.log("Playing note");
+    }
+  }, [play]);
 
   const handleVideoLoaded = () => {
     setVideoLoaded(true);

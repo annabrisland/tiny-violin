@@ -62,13 +62,18 @@ export const findTouchingFingers = (handsData, distanceThreshold) => {
       ring: handsData[0].keypoints[16],
       pinky: handsData[0].keypoints[20],
     };
-    // Calculate distance between thumb and index finger
-    const thumbIndexDistance = Math.hypot(
-      fingertips.thumb.x - fingertips.index.x,
-      fingertips.thumb.y - fingertips.index.y
-    );
-    if (thumbIndexDistance < distanceThreshold) {
-      return true;
+    // Loop through fingertips and check distance from thumb
+    for (let finger in fingertips) {
+      if (finger !== "thumb") {
+        // Calculate distance between thumb and finger
+        const thumbFingerDistance = Math.hypot(
+          fingertips.thumb.x - fingertips[finger].x,
+          fingertips.thumb.y - fingertips[finger].y
+        );
+        if (thumbFingerDistance < distanceThreshold) {
+          return true;
+        }
+      }
     }
   }
   return false;
