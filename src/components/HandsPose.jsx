@@ -19,6 +19,7 @@ function HandsPose() {
     { finger:"Left-ring", play: false },
     { finger:"Left-pinky", play: false },
   ]);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const togglePlay = (fingerID) => {
     setWhichFinger(whichFinger =>
@@ -92,11 +93,15 @@ function HandsPose() {
   // Play note when fingers are touching
   useEffect(() => {
     whichFinger.forEach((finger) => {
-      if (finger.play) {
+      if (finger.play && !isPlaying) {
+        setIsPlaying(true);
         playNote(finger.finger);
+        setTimeout(() => {
+          setIsPlaying(false);
+        }, 200);
       }
     });
-  }, [whichFinger]);
+  }, [whichFinger, isPlaying]);
 
   const handleVideoLoaded = () => {
     setVideoLoaded(true);

@@ -92,14 +92,14 @@ export const findTouchingFingers = (handsData, distanceThreshold) => {
 // Function to play note
 export const playNote = (finger) => {
   const note = {
-    'Right-index': "C",
-    'Right-middle': "C",
-    'Right-ring': "C",
-    'Right-pinky': "C",
-    'Left-index': "F",
-    'Left-middle': "F",
-    'Left-ring': "F",
-    'Left-pinky': "F",
+    'Right-index': "string",
+    'Right-middle': "Em",
+    'Right-ring': "Em",
+    'Right-pinky': "CEm",
+    'Left-index': "string",
+    'Left-middle': "Em",
+    'Left-ring': "Em",
+    'Left-pinky': "Em",
   };
   const audio = new Audio(`src/assets/notes/${note[finger]}.wav`);
   audio.play();
