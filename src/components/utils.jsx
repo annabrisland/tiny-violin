@@ -25,12 +25,13 @@ export const drawHands = (handsData, ctx) => {
           const firstPoint = keypoints[points[i]];
           const secondPoint = keypoints[points[i + 1]];
           // Draw line
+          // ctx.filter = "blur(10px)";
           ctx.beginPath();
           ctx.moveTo(firstPoint.x, firstPoint.y);
           ctx.lineTo(secondPoint.x, secondPoint.y);
           // Set line styles
-          ctx.strokeStyle = "indigo";
-          ctx.lineWidth = 4;
+          ctx.strokeStyle = "white";
+          ctx.lineWidth = 5;
           ctx.stroke();
         }
       }
@@ -44,7 +45,7 @@ export const drawHands = (handsData, ctx) => {
         ctx.beginPath();
         ctx.arc(X, Y, 5, 0, 3 * Math.PI);
         // Set line styles
-        ctx.fillStyle = "indigo";
+        ctx.fillStyle = "white";
         ctx.fill();
       }
     });
@@ -54,41 +55,53 @@ export const drawHands = (handsData, ctx) => {
 // Function to find touching fingers
 export const findTouchingFingers = (handsData, distanceThreshold) => {
   if (handsData.length > 0) {
-    // Get thumb and fingertips
-    const fingertips = {
-      thumb: handsData[0].keypoints[4],
-      index: handsData[0].keypoints[8],
-      middle: handsData[0].keypoints[12],
-      ring: handsData[0].keypoints[16],
-      pinky: handsData[0].keypoints[20],
-    };
-    // Loop through fingertips and check distance from thumb
-    for (let finger in fingertips) {
-      if (finger !== "thumb") {
-        // Calculate distance between thumb and finger
-        const thumbFingerDistance = Math.hypot(
-          fingertips.thumb.x - fingertips[finger].x,
-          fingertips.thumb.y - fingertips[finger].y
-        );
-        if (thumbFingerDistance < distanceThreshold) {
-          // Returns finger and touching status
-          return { finger, touching: true };
+    const touchingFingers = [];
+    // Loop through left and right hands
+    handsData.forEach((data) => {
+      // Check which hand it is
+      const handedness = data.handedness;
+      // Get thumb and fingertips
+      const fingertips = {
+        thumb: data.keypoints[4],
+        index: data.keypoints[8],
+        middle: data.keypoints[12],
+        ring: data.keypoints[16],
+        pinky: data.keypoints[20],
+      };
+      // Loop through fingertips and check distance from thumb
+      for (let finger in fingertips) {
+        if (finger !== "thumb") {
+          // Calculate distance between thumb and finger
+          const thumbFingerDistance = Math.hypot(
+            fingertips.thumb.x - fingertips[finger].x,
+            fingertips.thumb.y - fingertips[finger].y
+          );
+          if (thumbFingerDistance < distanceThreshold) {
+            // Makes handTouching an object with the finger and touching status
+            const handTouching = handedness + "-" + finger;
+            touchingFingers.push(handTouching);
+          }
         }
       }
-    }
+    });
+    return touchingFingers;
   }
-  return false;
-}
+  return [];
+};
 
 // Function to play note
 export const playNote = (finger) => {
   const note = {
-    index: "note1",
-    middle: "note1",
-    ring: "note1",
-    pinky: "note1",
+    'Right-index': "C",
+    'Right-middle': "C",
+    'Right-ring': "C",
+    'Right-pinky': "C",
+    'Left-index': "F",
+    'Left-middle': "F",
+    'Left-ring': "F",
+    'Left-pinky': "F",
   };
-  const audio = new Audio(`src/assets/notes/${note[finger]}.mp3`);
+  const audio = new Audio(`src/assets/notes/${note[finger]}.wav`);
   audio.play();
   console.log("Playing note:", note[finger]);
 };

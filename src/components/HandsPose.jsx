@@ -7,10 +7,26 @@ import { drawHands, findTouchingFingers, playNote } from "./utils";
 function HandsPose() {
   const [detector, setDetector] = useState(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [play, setPlay] = useState(false);
-  const [finger, setFinger] = useState(null);
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
+  const [whichFinger, setWhichFinger] = useState([
+    { finger:"Right-index", play: false },
+    { finger:"Right-middle", play: false },
+    { finger:"Right-ring", play: false },
+    { finger:"Right-pinky", play: false },
+    { finger:"Left-index", play: false },
+    { finger:"Left-middle", play: false },
+    { finger:"Left-ring", play: false },
+    { finger:"Left-pinky", play: false },
+  ]);
+
+  const togglePlay = (fingerID) => {
+    setWhichFinger(whichFinger =>
+      whichFinger.map((finger) =>
+      fingerID.includes(finger.finger) ? { ...finger, play: true } : { ...finger, play: false }
+      )
+    );
+  }
 
   useEffect(() => {
     const initializeHandDetection = async () => {
@@ -60,8 +76,7 @@ function HandsPose() {
           drawHands(hands, ctx);
           // Check if & which fingers are touching
           const touchingFingers = findTouchingFingers(hands, 15);
-          setPlay(touchingFingers.touching);
-          setFinger(touchingFingers.finger);
+          togglePlay(touchingFingers);
         }
       } catch (error) {
         console.log("Error detecting hands:", error);
@@ -76,10 +91,12 @@ function HandsPose() {
 
   // Play note when fingers are touching
   useEffect(() => {
-    if (play) {
-      playNote(finger);
-    }
-  }, [play]);
+    whichFinger.forEach((finger) => {
+      if (finger.play) {
+        playNote(finger.finger);
+      }
+    });
+  }, [whichFinger]);
 
   const handleVideoLoaded = () => {
     setVideoLoaded(true);
