@@ -103,5 +103,4 @@ export const playNote = (finger) => {
   };
   const audio = new Audio(`src/assets/notes/${note[finger]}.wav`);
   audio.play();
-  console.log("Playing note:", note[finger]);
 };

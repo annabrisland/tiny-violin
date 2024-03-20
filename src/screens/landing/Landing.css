@@ -1,0 +1,14 @@
+body {
+    background-color: #121212;
+    color: white;
+}
+
+.landingImg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-left: 300px;
+    z-index: 9;
+    height: 150vh;
+    object-fit: contain;
+}

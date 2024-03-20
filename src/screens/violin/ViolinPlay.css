@@ -1,0 +1,52 @@
+.soundControl {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    object-fit: contain;
+    z-index: 10;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.instructions {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100vw;
+    z-index: 10;
+}
+
+.instructionsContent {
+    opacity: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    margin: 20px;
+    border-radius: 15px;
+    background-color: #1E1E1E;
+    z-index: 11;
+    padding: 16px;
+    bottom: -10px;
+    transition: .4s cubic-bezier(.25, .1, 0, 2.05);
+}
+
+.instructionsContent:hover {
+    opacity: 1;
+    bottom: 0px;
+}
+
+.instructionsBtn {
+    position: absolute;
+    height: 40px;
+    bottom: 80px;
+    z-index: 10;
+    object-fit: contain;
+}
+
+.instructionsContent img {
+    object-fit: contain;
+    height: 100%;
+}

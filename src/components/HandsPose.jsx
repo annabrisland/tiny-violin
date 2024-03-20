@@ -98,7 +98,7 @@ function HandsPose() {
         playNote(finger.finger);
         setTimeout(() => {
           setIsPlaying(false);
-        }, 200);
+        }, 150);
       }
     });
   }, [whichFinger, isPlaying]);

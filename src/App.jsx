@@ -1,11 +1,12 @@
 import "./App.css";
-import HandsPose from "./components/HandsPose";
+import Landing from "./screens/landing/Landing";
+import ViolinPlay from "./screens/violin/ViolinPlay";
 
 function App() {
 
   return (
     <div>
-    <HandsPose />
+      <ViolinPlay />
     </div>
   );
 }
