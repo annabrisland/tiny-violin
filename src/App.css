@@ -4,7 +4,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-.video-feed {
+.video-feed, .canvas-feed {
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -13,5 +13,12 @@ body {
 	height: 100vh;
 	width: 100%;
 	object-fit: cover;
-	background-color: #121212;
+}
+
+.video-feed {
+	opacity: 0;
+}
+
+.canvas-feed {
+	filter: blur(25px);
 }

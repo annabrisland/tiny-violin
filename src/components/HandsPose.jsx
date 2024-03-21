@@ -117,7 +117,7 @@ function HandsPose() {
         audio={false}
         onUserMedia={() => handleVideoLoaded()}
       />
-      <canvas className="video-feed" ref={canvasRef} />
+      <canvas className="canvas-feed" ref={canvasRef} />
     </div>
   );
 }

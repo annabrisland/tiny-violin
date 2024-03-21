@@ -25,13 +25,12 @@ export const drawHands = (handsData, ctx) => {
           const firstPoint = keypoints[points[i]];
           const secondPoint = keypoints[points[i + 1]];
           // Draw line
-          // ctx.filter = "blur(10px)";
           ctx.beginPath();
           ctx.moveTo(firstPoint.x, firstPoint.y);
           ctx.lineTo(secondPoint.x, secondPoint.y);
           // Set line styles
-          ctx.strokeStyle = "white";
-          ctx.lineWidth = 5;
+          ctx.strokeStyle = "#505050";
+          ctx.lineWidth = 15;
           ctx.stroke();
         }
       }
@@ -43,9 +42,9 @@ export const drawHands = (handsData, ctx) => {
         const Y = keypoints[i].y;
         // Draw
         ctx.beginPath();
-        ctx.arc(X, Y, 5, 0, 3 * Math.PI);
+        ctx.arc(X, Y, 15, 0, 3 * Math.PI);
         // Set line styles
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "#505050";
         ctx.fill();
       }
     });
@@ -77,7 +76,6 @@ export const findTouchingFingers = (handsData, distanceThreshold) => {
             fingertips.thumb.y - fingertips[finger].y
           );
           if (thumbFingerDistance < distanceThreshold) {
-            // Makes handTouching an object with the finger and touching status
             const handTouching = handedness + "-" + finger;
             touchingFingers.push(handTouching);
           }
