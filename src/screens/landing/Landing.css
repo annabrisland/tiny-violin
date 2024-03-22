@@ -1,6 +1,12 @@
 body {
     background-color: #121212;
-    color: white;
+    color: rgb(255, 255, 255, 0.7);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 36px;
 }
 
 .landing {
@@ -11,27 +17,75 @@ body {
     height: 100vh;
 }
 
-.landingBtn {
-    background-color: #121212;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 10px;
-    height: 50px;
+.landingText {
     object-fit: contain;
-    transition: .4s
-}
-
-.landingBtn:hover {
-    height: 55px;
-    /* background-color: #222222; */
+    height: 110px;
+    margin-top: 10px;
 }
 
 .landingImg {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    margin-left: 300px;
-    z-index: 9;
-    height: 150vh;
     object-fit: contain;
+    height: 200px;
+    margin-bottom: 50px;
+}
+
+.arrowImg {
+    object-fit: contain;
+    height: 80px;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+.arrowImg:hover {
+    cursor: pointer;
+    translate: 20px;
+}
+
+.proj-text {
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    margin: 20px;
+    background-color: #222222;
+    border-radius: 15px;
+    padding: 16px;
+    width: 300px;
+    bottom: -10px;
+    transition: .4s cubic-bezier(.25, .1, 0, 2.05);
+}
+
+.proj-text:hover {
+    opacity: 1;
+    bottom: 0;
+}
+
+.infoBtn {
+    position: absolute;
+    object-fit: contain;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    margin: 40px;
+    z-index: inherit;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    margin: 16px 0;
+}
+
+.creator-info, .ref-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-link {
+    text-decoration: none;
+    color: rgb(255, 255, 255, 0.9);
 }

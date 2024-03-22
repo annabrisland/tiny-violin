@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 import * as handPoseDetection from "@tensorflow-models/hand-pose-detection";
 import { drawHands, findTouchingFingers, playNote } from "./utils";
 
-function HandsPose() {
+function HandsPose({sound}) {
   const [detector, setDetector] = useState(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const webcamRef = useRef(null);
@@ -93,7 +93,7 @@ function HandsPose() {
   // Play note when fingers are touching
   useEffect(() => {
     whichFinger.forEach((finger) => {
-      if (finger.play && !isPlaying) {
+      if (finger.play && !isPlaying && sound) {
         setIsPlaying(true);
         playNote(finger.finger);
         setTimeout(() => {
@@ -101,7 +101,7 @@ function HandsPose() {
         }, 150);
       }
     });
-  }, [whichFinger, isPlaying]);
+  }, [whichFinger, isPlaying, sound]);
 
   const handleVideoLoaded = () => {
     setVideoLoaded(true);

@@ -10,13 +10,19 @@ function ViolinPLay() {
   const [sound, setSound] = useState(true);
   const soundControl = () => {
     setSound(!sound);
-  }
+  };
+  
   return (
     <div>
-      <img className="soundControl" src={`${sound ? soundOn : soundOff}`} alt="sound-control" onClick={soundControl}/>
-      <HandsPose />
+      <img
+        className="soundControl"
+        src={`${sound ? soundOn : soundOff}`}
+        alt="sound-control"
+        onClick={soundControl}
+      />
+      <HandsPose sound={sound}/>
       <div className="instructions">
-        <img className="instructionsBtn" src={help} alt="help"/>
+        <img className="instructionsBtn" src={help} alt="help" />
         <div className="instructionsContent">
           <img src={hands} alt="hands" />
         </div>
