@@ -1,3 +1,12 @@
+import EmLong from "../assets/notes/EmLong.wav";
+import AmLong from "../assets/notes/AmLong.wav";
+import DmLong from "../assets/notes/DmLong.wav";
+import GLong from "../assets/notes/GLong.wav";
+import CLong from "../assets/notes/CLong.wav";
+import FLong from "../assets/notes/FLong.wav";
+import BsharpLong from "../assets/notes/BsharpLong.wav";
+import BdimLong from "../assets/notes/BdimLong.wav";
+
 // Define finger points
 const fingerPoints = {
   thumb: [0, 1, 2, 3, 4],
@@ -90,15 +99,15 @@ export const findTouchingFingers = (handsData, distanceThreshold) => {
 // Function to play note
 export const playNote = (finger) => {
   const note = {
-    'Right-index': "EmLong",
-    'Right-middle': "AmLong",
-    'Right-ring': "DmLong",
-    'Right-pinky': "GLong",
-    'Left-index': "CLong",
-    'Left-middle': "FLong",
-    'Left-ring': "BsharpLong",
-    'Left-pinky': "BdimLong",
+    'Right-index': EmLong,
+    'Right-middle': AmLong,
+    'Right-ring': DmLong,
+    'Right-pinky': GLong,
+    'Left-index': CLong,
+    'Left-middle': FLong,
+    'Left-ring': BsharpLong,
+    'Left-pinky': BdimLong,
   };
-  const audio = new Audio(`notes/${note[finger]}.wav`);
+  const audio = new Audio(note[finger]);
   audio.play();
 };
