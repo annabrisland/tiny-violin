@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Webcam from "react-webcam";
-import * as handPoseDetection from "@tensorflow-models/hand-pose-detection";
+import * as handPoseDetection from "../node_modules/@tensorflow-models/hand-pose-detection";
 import { drawHands, findTouchingFingers, playNote } from "./utils";
 
 function HandsPose({sound}) {

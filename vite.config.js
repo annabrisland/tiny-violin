@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      './runtimeConfig': './runtimeConfig.browser',
-    },
-  },
+      "@": path.resolve(__dirname, "./src")
+    }
+  }
 })
