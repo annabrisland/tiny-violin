@@ -14,4 +14,5 @@ export default defineConfig({
   resolve: {
     alias: [{ find: "@", replacement: "./src" }],
   },
+  external: ['@tensorflow/tfjs-core'],
 })
