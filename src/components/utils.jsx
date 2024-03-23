@@ -99,6 +99,7 @@ export const playNote = (finger) => {
     'Left-ring': "BsharpLong",
     'Left-pinky': "BdimLong",
   };
-  const audio = new Audio(`src/assets/notes/${note[finger]}.wav`);
+  const soundURL = new URL('src/assets/notes/${note[finger]}.wav', import.meta.url);
+  const audio = new Audio(soundURL.href);
   audio.play();
 };
