@@ -9,7 +9,6 @@ export default defineConfig({
     react(),
     mediapipe_workaround()
   ],
-  publicDir: "node_modules/@mediapipe/hands",
 })
 
 function mediapipe_workaround() {
