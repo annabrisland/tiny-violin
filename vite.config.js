@@ -16,7 +16,7 @@ function mediapipe_workaround() {
   return {
     name: 'mediapipe_workaround',
     load(id) {
-      if (path.basename(id) === 'selfie_segmentation.js') {
+      if (path.basename(id) === 'hands.js') {
         let code = fs.readFileSync(id, 'utf-8');
         code += 'exports.Hands = Hands;';
         return {code};
