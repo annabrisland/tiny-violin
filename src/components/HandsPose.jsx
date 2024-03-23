@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import Webcam from "react-webcam";
-import '@mediapipe/hands';
-import "@tensorflow/tfjs-backend-webgl";
 import * as handPoseDetection from "@tensorflow-models/hand-pose-detection";
 import { drawHands, findTouchingFingers, playNote } from "./utils";
 
