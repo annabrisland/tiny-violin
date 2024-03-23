@@ -36,7 +36,7 @@ function HandsPose({sound}) {
         const model = handPoseDetection.SupportedModels.MediaPipeHands;
         const detectorConfig = {
           runtime: "mediapipe",
-          solutionPath: "base/node_modules/@mediapipe/hands",
+          solutionPath: "/",
           modelType: "full",
         };
         const detector = await handPoseDetection.createDetector(
