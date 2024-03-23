@@ -1,8 +1,15 @@
-# React + Vite
+# Tiny Violin 🎻👌
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tiny Violin explores guesture based interaction by allowing users to enjoy creating music through device interaction.
 
-Currently, two official plugins are available:
+Users can play a range of 8 notes by touching fingers to thumbs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Play the Tiny Violin [here](https://tiny-violin.annabrisland.com/).
+
+## How to Play
+Built using TensorFlow.js and MediaPipe, the user can interact with the application by holding their hands up in front of their camera. The application will detect the user's hands and display a visual representation of the user's hands on the screen. The user can then play notes by touching their fingers to their thumbs.
+
+## References
+[Handpose](https://github.com/tensorflow/tfjs-models/tree/master/handpose) - A TensorFlow.js model that allows for hand tracking and gesture recognition.
+
+[MediaPipe](https://github.com/google/mediapipe/blob/master/docs/solutions/hands.md) - Machine learning for high-fidelity hand and finger tracking solution.
