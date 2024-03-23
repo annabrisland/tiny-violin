@@ -7,12 +7,11 @@ export default defineConfig({
   build: {
     outDir: './build',
     rollupOptions: {
-      external: './src',
+      external: ['@tensorflow/tfjs-core'],
     },
   },
   plugins: [react()],
   resolve: {
     alias: [{ find: "@", replacement: "./src" }],
   },
-  external: ['@tensorflow/tfjs-core'],
 })
