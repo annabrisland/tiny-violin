@@ -2,6 +2,8 @@
 
 Tiny Violin explores guesture based interaction by allowing users to enjoy creating music through device interaction.
 
+![TinyViolin](./screenshot.png)
+
 Users can play a range of 8 notes by touching fingers to thumbs.
 
 Play the Tiny Violin [here](https://tiny-violin.annabrisland.com/).
