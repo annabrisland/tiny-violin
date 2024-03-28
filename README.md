@@ -1,6 +1,6 @@
 # Tiny Violin 🎻👌
 
-Tiny Violin explores guesture based interaction by allowing users to enjoy creating music through device interaction.
+Tiny Violin explores gesture based interaction by allowing users to enjoy creating music through device interaction.
 
 ![TinyViolin](./screenshot.png)
 

@@ -20,7 +20,7 @@ function Landing() {
       <img className="infoBtn" src={help} alt="help" />
         <div className="proj-text">
           <div>
-            Tiny Violin explores guesture based interaction by allowing users to
+            Tiny Violin explores gesture based interaction by allowing users to
             enjoy creating music through device interaction.
           </div>
           <div>
